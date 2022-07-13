@@ -1,0 +1,1859 @@
+# Код первого рабочего дня
+'''
+def solutionA():
+    n=int(input())
+    if n!=1:
+        print(myf(n))
+    else:
+        print(1)
+
+def solutionB():
+    if eratosfen(int(input()))==True:
+        print('YES')
+    else:
+        print('NO')
+
+def solutionC():
+    print(*factorization(int(input())))
+
+def solutionD():
+    print(system10(int(input()),2))
+
+def solutionE():
+    pass
+
+def solutionF():
+    item=factorization(int(input()))
+    if len(item)==len(set(item)) and len(item)==2:
+        print('YES')
+    else:print('NO')
+
+def solutionG():
+    #Java - сила! Питон - днище!
+    pass
+
+def solutionH():
+    pass
+
+def solutionI():
+    n,m=map(int,input().split())
+    bactery=list(map(int,input().split()))
+    if sum(bactery)==m:
+        print('YES')
+    else: pass
+
+def solutionJ():
+    x=int(input())
+    for i in range(x+1,int(1.01*x)+1):
+        if myf(i)>=100:
+            print(i)
+            break
+    else:print(-1)
+
+def solutionK():
+    l,r=map(int,input().split())
+    counter=0
+    for i in range(l,r+1):
+        if myf(i)>2 and i!=1 and i!=0 and eratosfen(myf(i)):
+            counter+=1
+    print(counter)
+
+def solutionL():
+    pass
+
+def lastSolution():
+    pass
+
+def eratosfen(n):
+    isprime=[True]*(n+1)
+    d=2
+    while d*d<=n:
+        if isprime[d]:
+            for i in range(d**2,n+1,d):
+                isprime[i]=False
+        d+=1
+    return isprime[n]
+
+def myf(a):
+    r=2
+    if a**0.5%1==0:
+        r+=1
+        q=int(a**0.5)-1
+    else:
+        q=int(a**0.5)
+    for i in range(2,q+1):
+        if a%i==0:
+            r+=2
+    return r
+
+def factorization(n):
+    simpledeviders=[]
+    for i in range(2,int(n**0.5)+1):
+        if n%i==0:
+            while n%i==0:
+                n//=i
+                simpledeviders.append(i)
+    if n>1:
+        simpledeviders.append(n)
+    return simpledeviders
+
+def system10(num,base):
+    newNum = ''
+    while num > 0:
+        newNum = str(num % base) + newNum
+        num //= base
+    return newNum
+solutionA()
+solutionB()
+solutionC()
+solutionD()
+solutionE()
+solutionF()
+solutionG()
+solutionH()
+solutionI()
+solutionJ()
+solutionK()
+solutionL()
+lastSolution()
+'''
+# Код второго рабочего дня
+'''
+def solutionA():
+    n,m=map(int,input().split())
+    print(evklid(m,n))
+def solutionB():
+    x,n,p=map(int,input().split())
+    print(power_mod(x,n,p))
+def solutionC():
+    import math
+    a=int(input())
+    b=int(input())
+    for i in range(math.ceil(a**0.5),int(b**0.5)+1):
+        print(i**2)
+def solutionD():
+    n,m=map(int,input().split())
+    print(n//evklid(m,n))
+def solutionE():
+    a1,a2,a3,a4=map(int,input().split())
+    squares=min(a1,a2)+min(a3,a4)
+    i=1
+    ans=0
+    while squares-i>=0:
+        squares-=i
+        i+=2
+        ans+=1
+    print(ans)
+def solutionF():
+    a,b,n=map(int,input().split())
+    print(n-n//(a*b//evklid(a,b)))
+def solutionG():
+    n=input()
+    l=len(n)
+    n=n.replace('#','0',1)
+    i=1
+    c=1
+    while True:
+
+        if l==len(str(c))and len(str(c-int(n)))-str(c-int(n)).count('0')==1:
+            print(str(c-int(n))[0])
+            break
+        else:
+            c*=(i+1)
+            i+=1
+def solutionH():
+    p=int(input())
+    m=int(input())
+    print(int(min(p/m,(p+1)/(m+1))))
+    print(int(max(p / m, (p + 1) / (m + 1))))
+
+def evklid(m,n):
+    while n!=0:
+       m,n = n,m%n
+    return m
+def power_mod(b,e,m):
+  x = 1
+  while e>0:
+    if e%2:
+      b,e,x=(b*b)%m,e//2,(b*x)%m
+    else:
+      b,e,x=(b*b)%m,e//2,x
+  return x
+
+
+#solutionA()
+#solutionB()
+#solutionC()
+#solutionD()
+#solutionE()
+#solutionF()
+#solutionG()
+#solutionH()'''
+# Код третьего рабочего дня
+'''
+
+ лекция сортировки
+ *Selection sort
+ идем по массиву пока не находим элемент 
+ меньше данного и потом меняем их местами O(n^2)
+ *Insertion sort
+ Смотрим префиксы. Идем по массиву и каждый новый элемент 
+ вставляем в префикс на свое место.
+Отличие от selection  в том что в sel. 
+мы храним сразу отсортированный префикс O(n^2).
+// Инверсия (i<j, ai>aj) элемент больше но левее
+* Merge sort
+если есть 2 отсортированных массива то
+можно слить их в 1 отсортированный массив.
+Ставим указатели на первые элементы. Меньший отправляем 
+в массив и счетик с меньшим передвигаем. Счетчик с 
+большим оставляем. O(n)
+//Дикий псевдокод:
+
+def merge_sort(a):   это за O(n*logn)
+    n=a.size()
+    if a.size=1:
+        return
+    merge_sort(a[0,n/2])
+    merge_sort(a[n/2,n]
+    a=merge(a[0,n/2],a[n/2,n])
+
+def merge(a, b):#в функцию 2 массива / это за O(n)
+    n= a.size()
+    m=b.size()
+    c=[m+n]
+    while i<n or j<n:
+        if j==m or ai<bj: 
+            c[i+j]=ai
+            i++
+        else:
+            c[i+j]=bj
+            j++
+ *Countsort сортировка подсчетом
+ пусть все элементы от 0 до k 
+ тогда заводим массив countsort с нулями
+ for i in range(len(mas)): mas-это массив который нужно отсортировать
+    counter[mas[i]]++
+    for j in range(len(counter)):
+        if counter[i]!=0:
+            print(counter[i])
+Работает за O(n);
+
+def merge(a,b): #сортировка за nlogn
+    n=len(a)
+    m=len(b)
+    i,j=0,0
+    c=[0]*(m+n)
+    while i<n or j<m:
+        if j==m or (i<n and a[i]<b[j]):
+            c[i+j]=a[i]
+            i+=1
+        else:
+            c[i+j]=b[j]
+            j+=1
+    return c
+def merge_sort(a):
+    if len(a)<=1:
+        return a
+    return merge(merge_sort(a[0:len(a)//2]),merge_sort(a[len(a)//2:len(a)]))
+
+def solutionA():
+    def CountSort(mas):
+        counter=[0]*102
+        ans=[]
+        for i in range(len(mas)):
+            counter[mas[i]]+=1
+        for j in range(len(counter)):
+            if counter[j]!=0:
+                for i in range(counter[j]):
+                    ans.append(j)
+        return ans
+    n,k=map(int,input().split())
+    mas=list(map(int,input().split()))
+    mas=CountSort(mas)
+    ans=0
+    for i in range(len(mas)):
+        if n-mas[i]>=0:
+            n=n-mas[i]
+            ans+=1
+        else:
+            break
+    print(ans)
+
+def solutionB():
+    def CountSort(mas):
+        counter=[0]*65536
+        ans=[]
+        for i in range(len(mas)):
+            counter[mas[i]-32768]+=1
+        for j in range(len(counter)):
+            if counter[j]!=0:
+                for i in range(counter[j]):
+                    ans.append(j-32768)
+        return ans
+    n=int(input())
+    mas=list(map(int,input().split()))
+    mas=CountSort(mas)
+    mas.reverse()
+    print(*mas)
+
+def solutionC():
+    n=int(input())
+    mas=list(map(int,input().split()))
+    print(*merge_sort(mas))
+
+def solutionD():
+    n=int(input())
+    CountSort(list(map(int,input().split())))
+def CountSort(mas):
+    counter=[0]*10
+    ans=''
+    for i in range(len(mas)):
+        counter[int(str(mas[i])[-1])]+=1
+    for j in range(len(counter)-1,-1,-1):
+        ans+=str(j)*counter[j]
+    print(ans)
+
+def solutionE():
+    n = int(input())
+    a = input().split(maxsplit=n)
+    print(*sorted(a, key=lambda x: x[-1]))
+
+def solutionF():
+    n=int(input())
+    mas=[]
+    a=[]
+    for i in range(n):
+        mas.append(list(map(int,input().split())))
+        a.append(mas[i])
+    ans=[]
+    mas.sort(key=lambda x:(-x[0],x[1]))
+    for i in range(n):
+        ans.append(a.index(mas[i])+1)
+    print(*ans)
+
+def solutionG():
+    try:
+        s=int(input())
+        n=int(input())
+
+        a=list(map(int,input().split()))
+        p,counter=0,0
+        a.sort()
+        for i in range(n):
+            if a[i]>=s:
+                p=a[i]
+                counter+=1
+                for j in range(i,n):
+                    if a[j]-p>=3:
+                        counter+=1
+                        p=a[j]
+                break
+
+        print(counter)
+    except:print(0)
+
+#solutionA()
+#solutionB()
+#solutionC()
+#solutionD()
+#solutionE()
+#solutionF()
+#solutionG()
+'''
+# Код четвертого рабочего дня
+'''
+def code():
+    from sys import stdin #это робит быстрее чем инпут
+    from sys import stdout
+    a=stdin.readline()
+
+Быстрая сортировка Хоара
+[1 2 3 4 2 3 0]
+Берем ключевой элемент и разбиваем все элементы на 2 типа. Больше него и меньше него.
+Меняем первый меньший элемент с первым большим элементом. К примеру пусть ключевой элемент это 1
+Тогда мы меняем 0 и 2 и получаем массив [1,0,3,4,2,3,2].
+Меняем ключевой элемент с последним меньшим элементом. [0,1,3,4,2,3,2] . Теперь единица встала на своё место.
+теперь наш массив разделен на 2 массива 
+Это работает за O(n^2) в худшем случае или O(nlogn) в лучшем.
+
+
+def solutionH():
+    n, m = map(int, input().split())
+    mas = []
+    for i in range(n):
+        a, b = map(int, input().split())
+        a, b = min(a, b), max(a, b)
+        mas.append([a, '('])
+        mas.append([b, ')'])
+    point = list(map(int, input().split()))
+    for i in range(len(point)):
+        mas.append([point[i], '(('])
+    k = 0
+    mas.sort()
+    dict = {}
+    for i in range(len(mas)):
+        if mas[i][1] == '(':
+            k += 1
+        elif mas[i][1] == ')':
+            k -= 1
+        else:
+            dict[mas[i][0]] = k
+    for i in point:
+        print(dict[i], end=" ")
+def solutionI():
+    n,k=map(int,input().split())
+    for i in range(n):
+        mas=list(map(int,input().split()))
+        mas.sort(key=lambda x:-x)
+        fl=True
+        for j in range(len(mas)):
+            a=mas[j+1::]
+            if sum(a)>mas[j]:
+                print('no')
+                fl=False
+                break
+        if fl==True:
+            print('yes')
+
+            #короче соруешь массив а дальше делаешь срезы и суммируешь их проверяя можно ли поставить блок. если да то ставишь если нет то брейк
+def solutionJ():
+    ans = 0
+    def merge(a, b):  # сортировка за nlogn
+        n = len(a)
+        m = len(b)
+        global ans
+        i, j = 0, 0
+        c = [0] * (m + n)
+        while i < n or j < m:
+            if j == m or (i < n and a[i] < b[j]):
+                c[i + j] = a[i]
+                i += 1
+                ans += j
+            else:
+                c[i + j] = b[j]
+                j += 1
+        return c
+
+    def merge_sort(a):
+        if len(a) <= 1:
+            return a
+        return merge(merge_sort(a[0:len(a) // 2]), merge_sort(a[len(a) // 2:len(a)]))
+
+    n = int(input())
+    merge_sort(list(map(int, input().split())))
+    print(ans)
+def solutionK():
+    n,l,r=map(int,input().split())
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    if a[0:l-1:1]==b[0:l-1:1] and a[r::]==b[r::]:
+        print('TRUTH')
+    else:
+        print('LIE')
+def solutionL():
+    #Not solution TL
+    n,k=map(int,input().split())
+    steps=list(map(int,input().split()))
+    c=sum(steps)
+    l = []
+    r = []
+    steps.sort()
+    for i in range(len(steps)):
+        if steps[i] >= 0:
+            r.append(steps[i])
+        else:
+            l.append(steps[i])
+    r.reverse()
+    if abs(sum(r))==abs(sum(l)):
+        lcounter = 0
+        c1=c
+        k1=k
+        while k1 > 0 and lcounter <len(l):
+            c1 += abs(l[lcounter]) * 2
+            k1 -= 1
+            lcounter += 1
+
+        rcounter = 0
+        while k > 0 and rcounter <len(r):
+            c += -1 * abs(r[rcounter]) * 2
+            k -= 1
+            rcounter += 1
+        print(max(abs(c),abs(c1)))
+
+
+    elif abs(sum(r))<abs(sum(l)):
+        lcounter = 0
+        while k > 0 and lcounter < len(l):
+            c += abs(l[lcounter]) * 2
+            k -= 1
+            lcounter += 1
+        print(abs(c))
+
+
+    else:
+        rcounter = 0
+        while k > 0 and rcounter < len(r):
+            c += -1 * abs(r[rcounter]) * 2
+            k -= 1
+            rcounter += 1
+            print(c,k,rcounter,r[rcounter])
+        print(abs(c))
+
+
+
+#solutionH()
+#solutionI()
+#solutionJ()
+#solutionK()
+#solutionL()'''
+# Код пятого рабочего дня
+'''
+Лекция
+1) Стек.
+пример: стопка посуды. Можно убирать и добавлять только сверху. есть функции peek( посмотреть что сверху.)
+size(смотреть размер) push pop (добавление убирание)
+2) Очередь.
+Добавление в конец . убрать из начала. Смотреть на первый элемент.посмотреть размер.
+3) Дек / двусторонняя очередь. 
+то же что и очередь но еще + удалять из конца, смотреть последний элемент и добавлять в начало
+4) Списки.
+Каждый элемент списка состоит из элемента и ссылки на него. в отличие от массива который хранится в общем виде.
+
+def solutionA():
+    n=int(input())
+    stack=[]
+    for i in range(n):
+        ipt=list(map(int,input().split()))
+        if ipt[0]==1:
+            stack.append((ipt[1]))
+        else:
+            print(stack[-1])
+            stack.pop(-1)
+
+def solutionB():
+    from queue import Queue
+    n=int(input())
+    q=Queue(maxsize=n+1)
+    for i in range(n):
+        mas = list(input().split())
+        if mas[0]=='+':
+            q.put(mas[1])
+        else:
+            print(q.queue[0])
+            q.get()
+
+def solutionC():
+    from collections import deque
+    n=int(input())
+    mas=[]
+    for i in range(150001):
+        mas.append(deque())
+    for i in range(n):
+        inp=list(input().split())
+        if inp[0]=='pushfront':
+            mas[int(inp[1])].appendleft(int(inp[2]))
+        elif inp[0]=='pushback':
+            mas[int(inp[1])].append(int(inp[2]))
+        elif inp[0]=='popfront':
+            print(mas[int(inp[1])][0])
+            mas[int(inp[1])].popleft()
+        else:
+            print(mas[int(inp[1])][-1])
+            mas[int(inp[1])].pop()
+
+#solutionA()
+#solutionB()
+#solutionC()
+'''
+# Код шестого рабочего дня
+'''def solutionD():
+    n=int(input())
+    nextElem=[0]*(n+1)
+    s=((1+n)*n)//2
+    for i in range(n-1):
+        a,b=map(int,input().split())
+        s-=b
+        nextElem[a]=b
+    print(s,end=' ')
+    for i in range(n-1):
+        print(nextElem[s],end=' ')
+        s=nextElem[s]
+
+def solutionE():
+    n=int(input())
+    stack=[]
+    mn=[]
+    for i in range(n):
+        inp=list(map(int,input().split()))
+        if inp[0]==1:
+            stack.append(inp[1])
+            try:
+                mn.append(min(stack[-1],mn[-1]))
+            except:
+                mn.append(stack[0])
+        elif  inp[0]==2:
+            stack.pop(-1)
+            mn.pop(-1)
+        else:
+            print(mn[-1])
+
+def solutionA():
+    n=int(input())
+    dp=[0]*45
+    dp[0]=1
+    dp[1]=1
+    for i in range(2,n):
+        dp[i]=dp[i-1]+dp[i-2]
+    print(dp[n-1])
+
+def solutionB():
+    n,k=map(int,input().split())
+    dp=[0]*(n+1)
+    dp[1]=1
+    for i in range(1,n+1):
+        if i<k:
+            dp[i]=sum(dp[0:i+1])
+        else:
+            dp[i]=sum(dp[i-k:i+1])
+    print(dp[n])
+
+def solutionC():
+    n=int(input())
+    money=list(map(int,input().split()))
+    dp=[0]*(n+1)
+    dp[0]=money[0]
+    try:
+        dp[1]=max(money[0]+money[1],money[1])
+    except:pass
+    for i in range(2,n):
+        dp[i]=max(dp[i-2]+money[i],dp[i-1]+money[i])
+    print(dp[n-1])
+
+def solutionD():
+    n, k = map(int, input().split())
+    Notneeded=int(input())
+    if Notneeded!=0:
+        BoolFrogs=list(map(int,input().split()))
+    dp = [0] * (n + 1)
+    dp[1] = 1
+    for i in range(1, n + 1):
+        try:
+            if i in BoolFrogs:
+                dp[i]=0
+            elif i < k:
+                dp[i] = sum(dp[0:i + 1])
+            else:
+                dp[i] = sum(dp[i - k:i + 1])
+        except:
+            if i < k:
+                dp[i] = sum(dp[0:i + 1])
+            else:
+                dp[i] = sum(dp[i - k:i + 1])
+    print(dp[n])
+#solutionD()
+def solutionE():
+    n=int(input())
+    start=1
+    dp=[0]*(n+3)
+    p=[0]*(n+3)
+    dp[1]=0
+    dp[2]=1
+    dp[3]=1
+    for i in range(2,n+1):
+        dp[i]=dp[i-1]+1
+        p[i]=1
+        if i%2==0 and (dp[i//2]+1)<dp[i]:
+            dp[i]=dp[i//2]+1
+            p[i]=2
+        if i%3==0 and (dp[i//3]+1)<dp[i]:
+            dp[i]=dp[i//3]+1
+            p[i]=3
+    print(dp[n])
+    ans=[]
+    ans.append(n)
+    while n!=1:
+        if p[n]==1:
+            n-=1
+        elif p[n]==2:
+            n//=2
+        else:
+            n//=3
+        ans.append(n)
+    ans.reverse()
+    print(*ans)
+
+
+
+#solutionD()
+#solutionE()
+#solutionA()
+#solutionB()
+#solutionC()
+#solutionD()
+solutionE()
+
+Лекция по ДП
+Пункты при рассуждении о ДП
+1) Определение
+2) База
+3) Переходы Чаще всего задается рекурентная формула
+4) Порядок обхода
+5) Ответ
+'''
+# Код седьмого рабочего дня
+'''
+def solution1():
+    n = int( input())
+    mas = [list(map(int,input().split())) for i in range(n)]
+    ans=0
+    for i in range(n):
+        for j in range(n):
+            if mas[i][j]==1:
+                ans+=1
+    print(ans//2)
+
+def solution2():
+    n=int(input())
+    mas = [[0 for j in range(n)] for i in range(n)]
+    for i in range(n):
+        points=list(map(int,input().split()))
+        try:
+            for j in range(1,len(points)):
+                mas[i][points[j]-1]=1
+        except:
+            pass
+    for i in range(len(mas)):
+        print(*mas[i], sep=' ')
+
+def solution3():
+    n = int(input())
+    istok=[]
+    stok=[]
+    helpMas = [0] * n
+    mas = [list(map(int, input().split())) for i in range(n)]
+    for i in range(n):
+        if sum(mas[i])==0:
+            stok.append(i+1)
+        for j in range(n):
+            helpMas[j]+=mas[i][j]
+    for i in range(len(helpMas)):
+        if helpMas[i]==0:
+            istok.append(i+1)
+    print(len(istok),*istok)
+    print(len(stok),*stok)
+
+def solution4():
+    n=int(input())
+    mas = [list(map(int, input().split())) for i in range(n)]
+    s=input()
+    allHills=list(map(int,input().split()))
+    hillOne=[]
+    hillTwo=[]
+    hillThree=[]
+    ans=0
+    for i in range(len(allHills)):
+        if allHills[i]==1:
+            hillOne.append(i)
+        elif allHills[i]==2:
+            hillTwo.append(i)
+        else:
+            hillThree.append(i)
+    for i in range(n):
+        for j in range(n):
+            if mas[i][j]==1 and ((i in hillOne and j not in hillOne) or (i in hillTwo and j not in hillTwo) or (i in hillThree and j not in hillThree)):
+                ans+=1
+    print(ans//2)
+
+def solutionA():
+    def dfs(v):
+        used[v] = True
+        for u in graph[v]:
+            if not used[u]:
+                dfs(u)
+    ans=0
+    n,m=map(int,input().split())
+    used = [False] * n
+    graph=[[] for i in range(n)]
+    for i in range(m):
+        a,b=map(int,input().split())
+        graph[a-1].append(b-1)
+        graph[b-1].append(a-1)
+    for i in range(n):
+        if used[i]==False:
+            ans+=1
+            dfs(i)
+    print(ans)
+
+def solutionB:
+    pass
+#solution1()
+#solution2()
+#solution3()
+#solution4()
+#solutionA()
+solutionB()
+
+Лекция Графы
+графы- множество вершин и множество ребер которые эти вершины связывают.
+Ориентированность - directed undirected. В неорентированном графе можно ходить и в ту и в другую сторону а в ориентированном по одному ребру можно идти только
+в одну сторону.
+Взвешенность - weighted и unweighted. Информация которая закладывается в ребро. Так называемая цена ребра. В зависимости от задачи она может принимать различные
+значения.
+Петли - ребра которые исходят и водят в одну и ту же вершину.
+Простой граф и мульти-граф - простой граф не содержит петель и кратных ребер
+Кратность ребер - разные ребра которые связывают одни и те же вершины 
+Дерево - граф, в котором из любой вершины можно добраться в любую при том, что количество ребер минимально.
+Разреженный граф - количество ребер сопоставимо количеству вершин
+Плотный граф - количество ребер сопоставимо с квадратом количества вершин.
+Двудольный граф - это граф который можно разбить на 2 множества так, чтобы все ребра связывают вершины из разных множеств.
+Цикл - Путь в графе который начинается и заканчивается в одной и той же вершине. Просто ребро циклом не считается.
+Ориентированный ацекличный граф - (что в нем интересного?) его вершины можно расположить так чтобы все ребра которые есть шли слева направо..
+Кросс - Пересечения ребер
+
+Как хранить граф?
+1) Хранить с помощью списка ребер. 1 2/ 2 3. 1->2->3. 
+2) Матрица смежности: 
+  1  2  3
+1 0  1  1
+2 1  0  1
+3 1  1  0
+3) Список смежности для каждой вершины есть список ребер которые исходят из неё.
+1 [2]
+2[1,3]
+3[2]
+
+Обходы графа :DFS(в глубину) BFS (в ширину)
+1) DFS Для обхода используется стэк. Находимся в вершине и идем по первому попавшемуся ребру если можем и если вершину мы не посещали.
+псевдокод по dfs:
+def dfs(v):
+    used[v]=True
+    for u in graph[v]:
+        if not used[u]:
+            dfc(u)
+2) BFS. Для обхода используется очередь. Стартовая вершина помещается в очередь. Добавляем в очередь элементы в которые можно попасть из только что удаленного
+'''
+# Код восьмого рабочего дня
+'''
+def solutionBLastDay():
+    def bfs (v):
+        q.append(v)
+        while len(q)>0:
+            v=q.popleft()
+            for u in graph[v]:
+                if not used[u]:
+                    used[u]=True
+                    mas[u]=mas[v]+1
+                    q.append(u)
+    from collections import deque
+    q=deque()
+    n,m=map(int,input().split())
+    mas=[0]*m
+    used = [False] * n
+    graph=[list(map(int,input().split())) for i in range(n)]
+    bfs(m-1)
+    print(*mas)
+
+Лекция
+Бинарный и тернарный поиск. бин поиск для монотонных функций а тер поиск для поиска экстремумов.
+
+
+def solutionA():
+    n,k=map(int,input().split())
+    mas1=list(map(int,input().split()))
+    mas2=list(map(int,input().split()))
+    for i in range(len(mas2)):
+        l = 0
+        r = n - 1
+        h=mas2[i]
+        fl=False
+        while r-l>=1:
+            m=mas1[(r+l)//2]
+            if h>m:
+                l=(r+l)//2+1
+            elif h<m:
+                r=(r+l)//2-1
+            if m==h:
+                print('YES')
+                fl=True
+                break
+        if mas1[l]==h or mas1[r]==h or m==h:
+            if fl==False:
+                print('YES')
+        else:
+            print('NO')
+
+def solutionB():
+    def merge(a, b):  # сортировка за nlogn
+        n = len(a)
+        m = len(b)
+        i, j = 0, 0
+        c = [0] * (m + n)
+        while i < n or j < m:
+            if j == m or (i < n and a[i] < b[j]):
+                c[i + j] = a[i]
+                i += 1
+            else:
+                c[i + j] = b[j]
+                j += 1
+        return c
+    def merge_sort(a):
+        if len(a) <= 1:
+            return a
+        return merge(merge_sort(a[0:len(a) // 2]), merge_sort(a[len(a) // 2:len(a)]))
+    def check(key):
+        l=-1
+        r=n
+        while r-l>1:
+            m=(r+l)//2
+            if mas[m]<=key:
+                l=m
+            else:r=m
+        return r
+    def check1(key):
+        l=-1
+        r=n
+        while r-l>1:
+            m=(r+l)//2
+            if mas[m]<key:
+                l=m
+            else:r=m
+
+        return l+1
+    n=int(input())
+    mas=list(map(int,input().split()))
+    mas=merge_sort(mas)
+    for i in range(int(input())):
+        a,b=map(int,input().split())
+        print(check(b)-check1(a))
+
+def solutionD():
+    from sys import stdout
+    l=0
+    r=int(input())+1
+    while r-l>1:
+        m=(r+l)//2
+        print(m)
+        stdout.flush()
+        answer=input()
+        if answer==0:
+            break
+        elif answer=='>=':
+            l=m
+        elif answer=='<':
+            r=m
+    print('!',l)
+
+def solutionE():
+    n,x,y=map(int,input().split())
+    l=0
+    r=(n-1)*max(x,y)
+    while r-l>1:
+        m=(r+l)//2
+        if (m//x+m//y)<n-1:
+            l=m
+        else:
+            r=m
+    print(r+min(x,y))
+#solutionA()
+#solutionB()
+#solutionD()
+#solutionE()
+'''
+# Код девятого рабочего дня
+'''
+Два указателя 
+
+def solutionA():
+    n,m=map(int,input().split())
+    sverla=list(map(int,input().split()))
+    dybelia=list(map(int,input().split()))
+    mn=10**9
+    j=0
+    for i in range(n):
+        while j<m:
+            if sverla[i] > dybelia[j] and j+1<m:
+                j+=1
+            else:break
+        if j>0:
+            k=min(abs(sverla[i]-dybelia[j]),abs(sverla[i]-dybelia[j-1]))
+        else:k=abs(sverla[i]-dybelia[j])
+        if mn>k:
+            mn=k
+    print(mn)
+
+def solutionB():
+    n,r=map(int,input().split())
+    mas=list(map(int,input().split()))
+    j=0
+    ans=0
+    for i in range(n-1):
+        while j<n:
+            if mas[j]-mas[i]<=r and j+1<n:
+                j+=1
+            else:break
+        if mas[j]-mas[i]>r:
+            ans+=n-j
+    print(ans)
+
+def solutionD():
+    n, l = map(int, input().split())
+    dots = list(map(int, input().split()))
+    num = 0
+    cen = 0
+    try:
+        while dots[cen] < l / 2:
+            cen += 1
+    except: cen=n
+    i = 0
+    while i < n and dots[i] <= l // 2:
+        for j in range(i + 1, n - 1):
+            if j < cen:
+                for k in range(cen, n):
+                    if max(dots[j] - dots[i], dots[k] - dots[j], l - dots[k] + dots[i]) <= l / 2:
+                        num += 1
+            else:
+                for k in range(j + 1, n):
+                    if max(dots[j] - dots[i], dots[k] - dots[j], l - dots[k] + dots[i]) <= l / 2:
+                        num += 1
+
+        i += 1
+    print(num)
+
+#solutionA()
+#solutionB()
+#solutionD()
+'''
+# Код десятого рабочего дня
+'''
+Лекция
+
+                   PQ       Hash     Tree     Multi   Dict
+add x           | log(2)n|O(1)-O(n)| log n | log n | O(1)-O(n)
+delete x        |-       |O(1)-O(n)| log n | log n | O(1)-O(n)
+contains x      |-       |O(1)-O(n)| log n | log n | O(1)-O(n)
+del First       |log(2)n |   -     | log n | log n | -
+del LAst        |-       |   -     | log n | log n | - 
+max,min         |-       |   -     | +     | +     | -
+одинаковые элем.| +      |   -     | -     | +     | -
+
+Как бороться с тем что в питоне нет некоторых функций:
+multiset -> map
+multiset-> set пар. (x,id)
+
+def solutionA():
+    import heapq
+    h=[]
+    for i in range(int(input())):
+        inp=list(map(int,input().split()))
+        if inp[0]==0:
+            heapq.heappush(h,-inp[1])
+        else:
+            print(-heapq.heappop(h))
+
+def solutionB1():
+    s=set()
+    for i in range(int(input())):
+        inp=list(input().split())
+        if inp[0]=='+':
+            s.add(int(inp[1]))
+        if inp[0]=='-':
+            try:
+                s.remove(int(inp[1]))
+            except:pass
+        if inp[0]=='?':
+            if int(inp[1]) in s:
+                print(1)
+            else:
+                print(0)
+
+def solutionC():
+    d = dict()
+    for i in range(int(input())):
+        inp = list(input().split())
+        if inp[0] == '1':
+            d[inp[1]] = d.get(inp[1], 0) + int(inp[2])
+        else:
+            print(d.get(inp[1], "ERROR"))
+
+def solutionD():
+    n=int(input())
+    s=list(map(int,input().split()))
+    ans=[]
+    s.sort()
+    i=0
+    while i<n:
+        if s[i] in ans:
+            ans.append(s[i]*2)
+        elif i+1<n:
+            if s[i]==s[i+1]:
+                ans.append(s[i]*2)
+                i+=1
+        i+=1
+    try:
+        if ans[-2]==ans[-1]:
+            print(ans[-1]*2)
+        else:print(max(ans[-1],s[-1]))
+    except:
+        if len(ans)>0:
+            print(max(ans[-1],s[-1]))
+        else:
+            print(s[-1])
+
+#solutionA()
+#solutionB1()
+#solutionC()
+#solutionD()
+'''
+# Код одиннадцатого рабочего дня
+'''
+def solutionB():
+    def bfs(v):
+        used[v]=0
+        q.put(v)
+        while not q.empty():
+            v=q.get()
+            for u in graph[v]:
+                if used[u]==-1:
+                    used[u]=used[v]+1
+                    q.put(u)
+        return used
+    from queue import Queue
+    q=Queue()
+    n,m=map(int,input().split())
+    mas=[list(map(int,input().split())) for i in range(n)]
+    used = [-1] * n
+    graph=[[]for i in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if mas[i][j]==1:
+                graph[i].append(j)
+    print(*bfs(m-1))
+
+import sys, threading
+fl = False
+def main():
+    def solutionC():
+        def dfs(v):
+            global fl
+            global fl1
+            if color[v]!=2:
+                color[v]=1
+                circle.append(v + 1)
+            else:return
+            for u in graph[v]:
+                if color[u] == 0:
+                    dfs(u)
+                elif color[u] == 1 :
+                    print('YES')
+                    print(*circle[circle.index(u + 1)::])
+                    fl = True
+                    exit(0)
+                else:
+                    pass
+            color[v] = 2
+            circle.pop(-1)
+
+        global fl
+        n, m = map(int, input().split())
+        color = [0] * n
+        graph = [[] for i in range(n)]
+        circle = []
+        for i in range(m):
+            a, b = map(int, input().split())
+            graph[a - 1].append(b - 1)
+        for i in range(n):
+            if fl == False:
+                dfs(i)
+            else:
+                break
+        if fl == False:
+            print('NO')
+    solutionC()
+sys.setrecursionlimit(10**9)
+threading.stack_size(2**27)
+thread = threading.Thread(target=main)
+thread.start()
+thread.join()
+
+def solutionA():
+    n=int(input())
+    mx=0
+    dp=[[0,0,0] for i in range(n)]
+    mp=[list(map(str,input())) for i in range(n)]
+    for i in range(3):
+        if mp[0][i] =='W':
+            dp[0][i]=-10**9
+        elif mp[0][i] =='.':
+            dp[0][i]=0
+        else:
+            dp[0][i]=1
+        if mx<dp[0][i]:
+            mx=1
+    for i in range(1,n):
+        for j in range(3):
+            if mp[i][j]=='W':
+                dp[i][j]=-10**9
+            elif mp[i][j]=='C':
+                dp[i][j]+=1
+            if j==0:
+                dp[i][j]+=max(dp[i-1][j],dp[i-1][j+1])
+            elif j==2:
+                dp[i][j] += max(dp[i - 1][j], dp[i - 1][j - 1])
+            else:
+                dp[i][j] += max(dp[i - 1][j], dp[i - 1][j + 1],dp[i-1][j-1])
+            if dp[i][j]>mx:
+                mx=dp[i][j]
+
+    print(mx)
+
+solutionA()
+'''
+# Код двеннадцатого рабочего дня
+'''
+def solutionB():
+    n, m = map(int, input().split())
+    mas = [list(map(int, input().split())) for i in range(n)]
+    dp = [[[] for i in range(m)] for i in range(n)]
+    for i in range(n):
+        for j in range(m):
+            if i == 0 and j != 0:
+                dp[i][j].append(mas[i][j] + dp[i][j - 1][0])
+                dp[i][j].append('R')
+            elif j == 0 and i != 0:
+                dp[i][j].append(mas[i][j] + dp[i - 1][j][0])
+                dp[i][j].append('D')
+            elif i == 0 and j == 0:
+                dp[0][0] += [mas[0][0], 'NotNeeded']
+            else:
+                if dp[i - 1][j] > dp[i][j - 1]:
+                    dp[i][j] += [mas[i][j] + dp[i - 1][j][0], 'D']
+                else:
+                    dp[i][j] += [mas[i][j] + dp[i][j - 1][0], 'R']
+    print(dp[-1][-1][0])
+    i = n - 1
+    j = m - 1
+    s = ''
+    while dp[i][j][1] != 'NotNeeded':
+        if dp[i][j][1] == 'R':
+            j -= 1
+            s = 'R' + s
+        else:
+            i -= 1
+            s = 'D' + s
+    print(s)
+
+
+def solutionD():
+    n, m = map(int, input().split())
+    weight = list(map(int, input().split()))
+    c = list(map(int, input().split()))
+    dp = []
+    dp.append([-1] * (m + 1))
+    dp[0][0] = 0
+    for i in range(n):
+        dp.append([0] * (m + 1))
+        for j in range(m + 1):
+            dp[-1][j] = dp[-2][j]
+        for j in range(m - weight[i], -1, -1):
+            b = dp[-1][j] != -1
+            if b and dp[-1][j + weight[i]] < dp[-1][j] + c[i]:
+                dp[-1][j + weight[i]] = dp[-1][j] + c[i]
+
+    c = max(dp[-1])
+    pos = 0
+    for i in range(len(dp[-1])):
+        if dp[-1][i] == c:
+            pos = i
+    i=n
+    j=pos
+    res=[]
+    while i > 0 and j > 0:
+        temp = j - weight[i - 1]
+        if dp[i - 1][j] != dp[i][j]:
+            res.append(i)
+            i -= 1
+            j = temp
+            c = dp[i][j]
+        else:
+            i -= 1
+    print(len(res[::-1]))
+    print(*res[::-1])
+
+def solutionE():
+    def mxsearch(dp,n):
+        mx=0
+        mxl=0
+        for i in range(n):
+            if dp[i][0]>mx:
+                if dp[i][1]=='Start':
+                    mx=0
+                else:mx=dp[i][1]
+                mxl=dp[i][0]
+        print(mxl)
+        return mxl,mx
+
+    n=int(input())
+    mas=list(map(int,input().split()))
+    dp=[[] for i in range(n)]
+    dp[0]=[1,'Start']
+    for i in range(n):
+        mas1=[]
+        for j in range(i):
+            if mas[j] < mas[i]:
+                mas1.append([mas[j],dp[j][0]])
+        try:
+            mas1.sort(key=lambda x:x[1])
+            dp[i]=[mas1[-1][1]+1,mas.index(mas1[-1][0])]
+        except:
+            dp[i]=[1,'Start']
+    q,ind=mxsearch(dp,n)
+    ans=[]
+    ans.append(mas[dp.index([q,ind])])
+    while ind!='Start':
+        ans.append(mas[ind])
+        ind=dp[ind][1]
+    ans.reverse()
+
+    print(*ans)
+
+
+# solutionB()
+#solutionD()
+solutionE()'''
+#Код тринадцатого рабочего дня
+'''
+import sys, threading
+def main():
+    def dfstype(i,j):
+        color[i][j]='Black'
+        try:
+            if paper[i+1][j]=='O' and i<m-1 and color[i+1][j]!='Black':
+                dfstype(i+1,j)
+        except:pass
+        try:
+            if paper[i][j+1]=='O'and j<n-1 and color[i][j+1]!='Black':
+                dfstype(i,j+1)
+        except:pass
+        try:
+            if paper[i][j-1]=='O' and color[i][j-1]!='Black' and j>=1:
+                dfstype(i,j-1)
+        except:pass
+        try:
+            if paper[i-1][j]=='O' and color[i-1][j]!='Black' and i>=1:
+                dfstype(i-1,j)
+        except:pass
+
+    ans=0
+    m,n=map(int,input().split())
+    paper=[list(map(str,input()))for i in range(m)]
+    color=[['White'for i in range(n)] for j in range(m)]
+    for i in range(m):
+        for j in range(n):
+            if color[i][j]=='White' and paper[i][j]!='.':
+                dfstype(i,j)
+                ans+=1
+    print(ans)
+sys.setrecursionlimit(10**9)
+threading.stack_size(2**27)
+thread = threading.Thread(target=main)
+thread.start()
+thread.join()
+
+from graphlib import TopologicalSorter
+import graphlib
+graph = {}
+n,m=map(int,input().split())
+for i in range(m):
+    a,b=map(int,input().split())
+    if not a in graph:
+        graph[a]=set()
+    graph[a].add(b)
+ts = graphlib.TopologicalSorter(graph)
+ans=list(ts.static_order())
+ans.reverse()
+print(*ans)
+
+
+#solutionI()
+
+Алгоритм Дейкстры
+Алгоритм по нахождению кратчайшего пути в взвешанном графе. Этот алгоритм находит кратчайшие пути от одной вершины до всех остальных при том что все веса были >=0.
+ dist-массив кротчайших расстояний
+ dist[i]=10**9
+ dist[0]=0 (стартовая вершина)
+ used[i]=False
+ for i in range(n):
+    next=-1
+    for v in range(n):
+        if != used[v] and (next==-1 or dist[next]>dist[v]):
+            next=v
+    if dist[next]==10**9:break
+    used[next]=True
+    #(v,e)куда идет ребро и вес ребра
+    for (v,e) in graph[next]:
+        dist[v]=min(dist[v],dist[next]+e)
+        
+Модифицированный алгоритм дейкстры
+dist[i]=10**9
+ dist[0]=0 (стартовая вершина)
+ used[i]=False
+priority_queue[i] = (dist[start],start)
+for i in range(n):
+    next=pq.pop
+    if dist[next]==10**9:break
+    used[next]=True
+    #(v,e)куда идет ребро и вес ребра
+    for (v,e) in graph[next]:
+        dist[v]=min(dist[v],dist[next]+e)
+        pq.push(dist[v],v)
+Реализация алгоритма дейкстры:
+
+from sys import stdin, stdout
+from heapq import heappush, heappop
+
+
+def main():
+    n, m = map(int, stdin.readline().split())
+    graph = [[] for _ in range(n)]
+    for _ in range(m):
+        v, u, w = map(int, stdin.readline().split())
+        v -= 1
+        u -= 1
+        graph[v].append([u, w])
+        graph[u].append([v, w])
+
+    start = 0
+
+    inf = int(2e9)
+    dist = [inf] * n
+    dist[start] = 0
+    heap = []
+    heappush(heap, [dist[start], start])
+
+    while len(heap) > 0:
+        next = heappop(heap)[1]
+        for (v, w) in graph[next]:
+            if dist[v] > dist[next] + w:
+                dist[v] = dist[next] + w
+                heappush(heap, [dist[v], v])
+        while len(heap) > 0 and heap[0][0] != dist[heap[0][1]]:
+            heappop(heap)
+
+    stdout.write(" ".join(map(str, dist)))
+
+
+main()
+
+#Челябинский муницип
+def solutionA():
+    a=int(input())
+    b=int(input())
+    c=int(input())
+    d=int(input())
+    e=int(input())
+    if d+c<=e:
+        print(1)
+    elif b+c<=e:
+        print(2)
+    elif b+a<=e:
+        print(3)
+    else:
+        print(4)
+def solutionC():
+    n,k=map(int,input().split())
+    mas=list(map(int,input().split()))
+    dp=[0]*n
+    dp[0]=1
+    for i in range(1,n):
+        if mas[i-1]==mas[i]:
+            pass
+        else:dp[mas[i]]+=1
+    ans=max(dp)
+    print(mas.index(ans),ans)
+
+#solutionC()
+'''
+#Код четырнадцатого рабочего дня
+'''
+Лекция
+
+-Алгоритм Прима/Крускала. Решает задачу когда есть взвешанный граф, и нужно убрать ребра так, 
+чтобы граф остался связанным но его вес стал бы наименьшим.
+- Система непересекающихся множеств.
+умеет 1) объединять множества 2) узнавать, в каком из множеств находится x. 
+Псевдокод
+
+СМН
+def check(v,u): Проверка лежат ли v и u в одном множестве
+    return main[v]!=main[u]
+    
+def unite (v,u): Объединение множеств
+    v=main[v]
+    u=main[u]
+    if size[u]>size[v]:
+        v,u=u,v
+    for x in range(множество[u]):
+        main[x]=v
+        множество[v].add(x)
+    множество[u].clear
+
+def kruskal(edges):#список ребер
+    sort(edges)
+    create_dsu() #создаем СНМ
+    for (w,v,u) in edges:
+     if check(v,u):
+        ans+=1 # суммарный вес ребер в основном дереве
+        unite(v,u)
+
+
+def Prima():№ список смежности
+    start=0
+    used=[False]*n
+    used[Start]=True
+    heap.add(graph[start](все ребра вида [start->x]))
+    while len(heap)>0:
+        heap.pop(w,v)
+        ans+=w
+        heap.add(graph[v])
+        while len(heap)>0 and used[heap[0][1]]:
+            heap.pop()    
+
+def solutionA():
+    from sys import stdin
+    def main():
+        n, start, finish = map(int, stdin.readline().split())
+        graph = [[] for _ in range(n)]
+
+        stroka = [list(map(int, input().split())) for i in range(n)]
+        for i in range(n):
+            for j in range(n):
+                if i != j and stroka[i][j] != -1:
+                    graph[i].append([j, stroka[i][j]])
+        inf = 2*(10**12)+1
+        start -= 1
+        dist = [inf] * n
+        dist[start] = 0
+        used = [False] * n
+        for _ in range(n):
+            next = -1
+            for v in range(n):
+                if not used[v] and (next == -1 or dist[next] > dist[v]):
+                    next = v
+            if dist[next] == inf:
+                break
+            used[next] = True
+            for (v, w) in graph[next]:
+                if dist[v] > dist[next] + w:
+                    dist[v] = dist[next] + w
+        if dist[finish - 1]!=2*(10**12)+1:
+            print(dist[finish - 1])
+        else:print(-1)
+    main()
+#solutionA()
+ans=0
+def solutionB():
+    def check(v,u):
+        return main[v] != main[u]
+
+    def unite(v, u):
+        v = main[v]
+        u = main[u]
+        if len(st[u]) > len(st[v]):
+            v, u = u, v
+        for x in st[u]:
+            main[x] = v
+            st[v].append(x)
+        st[u].clear()
+
+    def kruskal():
+        global ans
+        edges.sort(key=lambda x:-x[0])
+        for (w,v,u) in edges:
+            if check(v,u):
+                if w<k:
+                    ans+=1
+                unite(v,u)
+    global ans
+    n,m=map(int,input().split())
+    main=[i for i in range(n)]
+    st=[[i]for i in range(n)]
+    edges=[]
+    for _ in range(m):
+        v,u,w=map(int,input().split())
+        edges.append([w,v-1,u-1])
+    k=int(input())
+    kruskal()
+    print(ans)
+#solutionB()
+def solutionF():
+    from sys import stdin, stdout
+    from heapq import heappush, heappop
+
+    def main():
+        n, m = map(int, stdin.readline().split())
+        graph = [[] for _ in range(n)]
+        for _ in range(m):
+            v, u, w = map(int, stdin.readline().split())
+            v -= 1
+            u -= 1
+            graph[v].append([u, w])
+            graph[u].append([v, w])
+
+        start = 0
+
+        inf = int(2e9)
+        dist = [inf] * n
+        dist[start] = 0
+        heap = []
+        heappush(heap, [dist[start], start])
+
+        while len(heap) > 0:
+            next = heappop(heap)[1]
+            for (v, w) in graph[next]:
+                if dist[v] > dist[next] + w:
+                    dist[v] = dist[next] + w
+                    heappush(heap, [dist[v], v])
+            while len(heap) > 0 and heap[0][0] != dist[heap[0][1]]:
+                heappop(heap)
+
+        stdout.write(" ".join(map(str, dist)))
+
+    main()
+#solutionF()
+def solutionD():
+    n=int(input())
+    mas=[list(map(int,input().split()))for i in range(n)]
+    dist=mas.copy()
+    for i in range(n):
+        for j in range(n):
+            for k in range(n):
+                if dist[i][j]!=int(2e9) and dist[i][k]!=int(2e9):
+                    dist[j][k]=min(dist[j][k],dist[j][i]+dist[i][k])
+    for el in dist:
+        print(*el)
+#solutionD()
+ans=0
+def solutionG():
+    from sys import stdin,stdout
+    def check(v,u):
+        return main[v] != main[u]
+
+    def unite(v, u):
+        v = main[v]
+        u = main[u]
+        if len(st[u]) > len(st[v]):
+            v, u = u, v
+        for x in st[u]:
+            main[x] = v
+            st[v].append(x)
+        st[u].clear()
+
+    def kruskal():
+        global ans
+        edges.sort()
+        for (w,v,u) in edges:
+            if check(v,u):
+                ans+=w
+                unite(v,u)
+    global ans
+    n,m=map(int,stdin.readline().split())
+    main=[i for i in range(n)]
+    st=[[i]for i in range(n)]
+    edges=[]
+    for _ in range(m):
+        v,u,w=map(int,stdin.readline().split())
+        edges.append([w,v-1,u-1])
+    kruskal()
+    stdout.write(str(ans))
+#solutionG()
+
+Лекция
+Префикс функция.
+Псевдокод. Плохая реализация
+for i in range(n): #O(n^3)
+    j=i
+    while j>0 and s[o:j]==s[i-j+1:i]:
+        j-=1
+    pi[i]=j
+
+Псевдокод. "Ну типо сойдет" реализация
+for i in range(n): #O(n^2)
+    j=pi[i-1]+1
+    while j>0 and s[o:j]==s[i-j+1:i+1]:
+        j-=1
+    pi[i]=j
+Псевдокод. Магия
+for i in range(n): #O(n)
+    j=pi[i-1]
+    while j>0 and s[j]!=s[i]:
+        j=p[i-1]
+    if s[i]==s[j]:
+        pi[i]=j+1
+    else:
+        pi[i]=j
+        
+Код префикс функции:
+s=input()
+l=len(s)
+pi=[0]*l
+for i in range(1,l):
+    j=pi[i-1]
+    while j>0 and s[j]!=s[i]:
+        j=pi[j-1]
+    if s[i]==s[j]:
+        pi[i]=j+1
+    else:pi[i]=j
+print(*pi)
+z-функция
+def solutionB1():
+    s=input()
+    Z = [0] * len(s)
+    Z[0] = len(s)
+    rt = 0
+    lt = 0
+    for k in range(1, len(s)):
+        if k > rt:
+            n = 0
+            while n + k < len(s) and s[n] == s[n+k]:
+                n += 1
+            Z[k] = n
+            if n > 0:
+                lt = k
+                rt = k+n-1
+        else:
+            p = k - lt.
+            right_part_len = rt - k + 1
+            if Z[p] < right_part_len:
+                Z[k] = Z[p]
+            else:
+                i = rt + 1
+                while i < len(s) and s[i] == s[i - k]:
+                    i += 1
+                Z[k] = i - k
+                lt = k
+                rt = i - 1
+    return Z
+
+def solutionA1():
+    s=input()
+    l=len(s)
+    pi=[0]*l
+    for i in range(1,l):
+        j=pi[i-1]
+        while j>0 and s[j]!=s[i]:
+            j=pi[j-1]
+        if s[i]==s[j]:
+            pi[i]=j+1
+        else:pi[i]=j
+    print(*pi)
+#solutionA1()
+def solutionB1():
+    s=input()
+    Z = [0] * len(s)
+    Z[0] = len(s)
+    rt = 0
+    lt = 0
+    for k in range(1, len(s)):
+        if k > rt:
+            n = 0
+            while n + k < len(s) and s[n] == s[n+k]:
+                n += 1
+            Z[k] = n
+            if n > 0:
+                lt = k
+                rt = k+n-1
+        else:
+            p = k - lt
+            right_part_len = rt - k + 1
+            if Z[p] < right_part_len:
+                Z[k] = Z[p]
+            else:
+                i = rt + 1
+                while i < len(s) and s[i] == s[i - k]:
+                    i += 1
+                Z[k] = i - k
+                lt = k
+                rt = i - 1
+    print(*Z[1:])
+solutionB1()
+'''
+# Код пятнадцатого рабочего дня
+''' Лекция
+z-функция - самый длинный префикс суффикса равный префиксу.
+Псевдокод:
+z[0]=0
+l,r=0,0
+for i in range(1,n):
+    if i<=r:
+        z[i]=min(z[i-l],r-i+1)
+    else:
+        z[i]=0
+    while i+ z[i]<n and s[z[i]]=s[i+z[i]]:
+        z[i]+=1
+    if i+z[i]-1>r:
+        r=i+z[i]-1
+        l=i 
+        
+Полимениальные хэши
+хэш-функция превращающая объект в число.
+Если хэши разные то объекты разные но если хеши одинаковые то объекты ЗАЧАСТУЮ одинаковые но не всегда.
+z-функция за O(n):
+    def Zfunc(s):
+        n = len(s)
+        z = [0] * n
+        z[0] = 0
+        l, r = 0, 0
+        for i in range(1, n):
+            if i <= r:
+                z[i] = min(z[i - l], r - i + 1)
+            else:
+                z[i] = 0
+            while i + z[i] < n and s[z[i]] == s[i + z[i]]:
+                z[i] += 1
+            if i + z[i] - 1 > r:
+                r = i + z[i] - 1
+                l = i
+        return z
+
+def solutionC():
+    def Zfunc(s):
+        n = len(s)
+        z = [0] * n
+        z[0] = 0
+        l, r = 0, 0
+        for i in range(1, n):
+            if i <= r:
+                z[i] = min(z[i - l], r - i + 1)
+            else:
+                z[i] = 0
+            while i + z[i] < n and s[z[i]] == s[i + z[i]]:
+                z[i] += 1
+            if i + z[i] - 1 > r:
+                r = i + z[i] - 1
+                l = i
+        return z
+
+    s1 = input()
+    n = len(s1)
+    s = s1 + '#' + input()
+    mas = Zfunc(s)
+    ans = 0
+    ansmas = []
+    for i in range(len(mas)):
+        if n == mas[i]:
+            ans += 1
+            ansmas.append(i - n)
+    print(ans)
+    print(*ansmas)
+#solutionC()
+def solutionD():
+    from sys import stdin
+    s=stdin.readline()
+    for i in range(int(input())):
+        a,b,c,d=map(int,input().split())
+        if hash(s[a-1:b])==hash(s[c-1:d]):
+            print('Yes')
+        else:
+            print('No')
+#solutionD()'''
